@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "powered=true": { "model": "mirrorstones:block/alchemical_earth" },
+    "powered=false": { "model": "mirrorstones:block/alchemical_earth_off" }
+  }
+}

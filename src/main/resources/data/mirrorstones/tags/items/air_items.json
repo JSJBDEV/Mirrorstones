@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:feather",
+    "#minecraft:leaves",
+    "minecraft:egg",
+    "#minecraft:arrows",
+    "#minecraft:banners"
+  ]
+}

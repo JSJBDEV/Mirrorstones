@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "powered=true": { "model": "mirrorstones:block/alchemical_air" },
+    "powered=false": { "model": "mirrorstones:block/alchemical_air_off" }
+  }
+}

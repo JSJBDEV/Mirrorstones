@@ -1,0 +1,15 @@
+{
+  "block.mirrorstones.alchemical_air": "Alchemical Air",
+  "block.mirrorstones.alchemical_earth": "Alchemical Earth",
+  "block.mirrorstones.alchemical_fire": "Alchemical Fire",
+  "block.mirrorstones.alchemical_water": "Alchemical Water",
+  "block.mirrorstones.alchemical_aether": "Alchemical Quintessence",
+
+  "item.mirrorstones.fire_theory": "︀ Theory of Fire",
+  "item.mirrorstones.water_theory": "︃ Theory of Water",
+  "item.mirrorstones.earth_theory": "︂ Theory of Earth",
+  "item.mirrorstones.air_theory": "︁ Theory of Air",
+
+  "block.mirrorstones.research_block": "Alchemist's Lab"
+
+}

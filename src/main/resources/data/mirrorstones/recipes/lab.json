@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "alchemy_lab",
+  "pattern": [
+    "BBB",
+    "WDW",
+    "WWW"
+  ],
+  "key": {
+    "W": {
+      "tag": "minecraft:stone_bricks"
+    },
+    "B": {
+      "item": "minecraft:blaze_powder"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "mirrorstones:research_block",
+    "count": 1
+  }
+}

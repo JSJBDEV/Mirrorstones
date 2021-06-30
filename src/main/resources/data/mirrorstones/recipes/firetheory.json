@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "theories",
+  "pattern": [
+    "CWW",
+    "WDW",
+    "WWW"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:paper"
+    },
+    "C": {
+      "item": "minecraft:red_wool"
+    },
+    "D": {
+      "item": "minecraft:book_and_quill"
+    }
+  },
+  "result": {
+    "item": "mirrorstones:fire_theory",
+    "count": 1
+  }
+}

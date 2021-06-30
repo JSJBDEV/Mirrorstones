@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:water_bucket",
+    "minecraft:cod_bucket",
+    "minecraft:seagrass",
+    "#minecraft:fishes",
+    "#minecraft:boats"
+  ]
+}
