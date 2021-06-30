@@ -9,11 +9,11 @@
     "Acrogenous"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/JSJBDEV/Mirrorstones",
+    "sources": "https://github.com/JSJBDEV/Mirrorstones"
   },
 
-  "license": "MIT",
+  "license": "GPL-3",
   "icon": "assets/mirrorstones/icon.png",
 
   "environment": "*",
@@ -23,7 +23,7 @@
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "mirrorstones.mixins.json"
   ],
 
   "depends": {
