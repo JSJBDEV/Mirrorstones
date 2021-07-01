@@ -6,8 +6,6 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
-import net.minecraft.entity.ai.TargetPredicate;
-import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,9 +13,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.LiteralText;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
-import net.minecraft.world.World;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -31,7 +27,7 @@ public class AetherBlock extends Block {
         super.randomTick(state, world, pos, random);
         List<PlayerEntity> players = world.getEntitiesByClass(PlayerEntity.class,new Box(pos.add(-25,-25,-25),pos.add(25,25,25)),PlayerEntity::isPlayer);
         int[] tower = getTowerStack(world,pos);
-        System.out.println(Arrays.toString(tower));
+        //System.out.println(Arrays.toString(tower));
         players.forEach(player->
         {
             if(player.getScoreboardTags().contains("air_devotee") && tower[0]>0)
