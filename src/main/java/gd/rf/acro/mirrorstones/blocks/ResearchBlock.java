@@ -1,9 +1,12 @@
 package gd.rf.acro.mirrorstones.blocks;
 
+import gd.rf.acro.mirrorstones.Mirrorstones;
 import gd.rf.acro.mirrorstones.interfaces.TheoryTaskAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
@@ -13,10 +16,25 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class ResearchBlock extends Block {
     public ResearchBlock(Settings settings) {
         super(settings);
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        super.onPlaced(world, pos, state, placer, itemStack);
+        if(placer!=null && !placer.getScoreboardTags().contains("ms_iii"))
+        {
+            placer.addScoreboardTag("ms_iii");
+            Mirrorstones.createBook("Acrogenous","Alchemy and Mirrorstones I",
+                    "Now that I have assembled a lab, I should now start studying the mirrorstones for any other properties they may have. \n I have a suspicion that they should react to theories I produce in different ways",
+                    "I should firstly craft a Fire, Water, Air or Earth theory and then study items and objects at my lab to continue my research on there effects, I should note down when I find tasks for my theories and try to complete them in one moon cycle",
+                    "Perhaps if I spend some time near the Mirrorstones I will inspire myself to find these tasks for my theories?");
+
+        }
     }
 
     @Override
@@ -61,7 +79,7 @@ public class ResearchBlock extends Block {
             }
             else
             {
-                String search = player.getStackInHand(hand).getItem().getTranslationKey();
+                String search = player.getStackInHand(hand).getItem().toString();
 
                 NbtList list = theoryTaskAccessor.getFireTasks();
                 for (int i = 0; i < list.size(); i++) {
@@ -69,6 +87,7 @@ public class ResearchBlock extends Block {
                     {
                         theoryTaskAccessor.removeFireTask(i);
                         player.getStackInHand(hand).decrement(1);
+                        player.sendMessage(new LiteralText("Completed a fire task!"),false);
                         break;
                     }
                 }
@@ -80,6 +99,7 @@ public class ResearchBlock extends Block {
                     {
                         theoryTaskAccessor.removeWaterTask(i);
                         player.getStackInHand(hand).decrement(1);
+                        player.sendMessage(new LiteralText("Completed a water task!"),false);
                         break;
                     }
                 }
@@ -91,6 +111,7 @@ public class ResearchBlock extends Block {
                     {
                         theoryTaskAccessor.removeEarthTask(i);
                         player.getStackInHand(hand).decrement(1);
+                        player.sendMessage(new LiteralText("Completed a earth task!"),false);
                         break;
                     }
                 }
@@ -102,12 +123,13 @@ public class ResearchBlock extends Block {
                     {
                         theoryTaskAccessor.removeAirTask(i);
                         player.getStackInHand(hand).decrement(1);
+                        player.sendMessage(new LiteralText("Completed a air task!"),false);
                         break;
                     }
                 }
 
             }
         }
-        return super.onUse(state, world, pos, player, hand, hit);
+        return ActionResult.PASS;
     }
 }
