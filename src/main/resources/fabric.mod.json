@@ -20,7 +20,10 @@
   "entrypoints": {
     "main": [
       "gd.rf.acro.mirrorstones.Mirrorstones"
-    ]
+    ],
+    "client": [{
+      "value": "gd.rf.acro.mirrorstones.ClientInit"
+    }]
   },
   "mixins": [
     "mirrorstones.mixins.json"

@@ -4,6 +4,7 @@ import gd.rf.acro.mirrorstones.Mirrorstones;
 import gd.rf.acro.mirrorstones.interfaces.TheoryTaskAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -15,12 +16,20 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class ResearchBlock extends Block {
     public ResearchBlock(Settings settings) {
         super(settings);
+    }
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+
+        return Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D);
     }
 
     @Override
@@ -48,7 +57,7 @@ public class ResearchBlock extends Block {
                 StringBuilder s = new StringBuilder("\nAir Tasks:\n");
                 for (NbtElement task : list) {
                     NbtCompound tag = (NbtCompound) task;
-                    s.append("Collect: ").append(tag.getString("item")).append("\n");
+                    s.append("Collect: ").append(tag.getString("item").replace("_"," ")).append("\n");
                 }
                 player.sendMessage(new LiteralText(s.toString()),false);
 
@@ -56,7 +65,7 @@ public class ResearchBlock extends Block {
                 s = new StringBuilder("\nWater Tasks:\n");
                 for (NbtElement task : list) {
                     NbtCompound tag = (NbtCompound) task;
-                    s.append("Collect: ").append(tag.getString("item")).append("\n");
+                    s.append("Collect: ").append(tag.getString("item").replace("_"," ")).append("\n");
                 }
                 player.sendMessage(new LiteralText(s.toString()),false);
 
@@ -64,7 +73,7 @@ public class ResearchBlock extends Block {
                 s = new StringBuilder("\nEarth Tasks:\n");
                 for (NbtElement task : list) {
                     NbtCompound tag = (NbtCompound) task;
-                    s.append("Collect: ").append(tag.getString("item")).append("\n");
+                    s.append("Collect: ").append(tag.getString("item").replace("_"," ")).append("\n");
                 }
                 player.sendMessage(new LiteralText(s.toString()),false);
 
@@ -72,7 +81,7 @@ public class ResearchBlock extends Block {
                 s = new StringBuilder("\nFire Tasks:\n");
                 for (NbtElement task : list) {
                     NbtCompound tag = (NbtCompound) task;
-                    s.append("Collect: ").append(tag.getString("item")).append("\n");
+                    s.append("Collect: ").append(tag.getString("item").replace("_"," ")).append("\n");
                 }
                 player.sendMessage(new LiteralText(s.toString()),false);
 
