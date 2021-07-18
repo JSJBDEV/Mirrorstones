@@ -34,7 +34,7 @@ import net.minecraft.world.gen.feature.StructureFeature;
 public class Mirrorstones implements ModInitializer {
 	public static final StructurePieceType MY_PIECE = MirrorstoneGenerator.MyPiece::new;
 	public static final StructureFeature<DefaultFeatureConfig> MY_STRUCTURE = new MirrorstoneFeature(DefaultFeatureConfig.CODEC);
-	private static final ConfiguredStructureFeature<?, ?> MY_CONFIGURED = MY_STRUCTURE.configure(DefaultFeatureConfig.DEFAULT);
+	private static final ConfiguredStructureFeature<DefaultFeatureConfig,?> MY_CONFIGURED = MY_STRUCTURE.configure(DefaultFeatureConfig.DEFAULT);
 
 	public static final Tag<Item> AIR_ITEMS = TagRegistry.item(new Identifier("mirrorstones","air_items"));
 	public static final Tag<Item> EARTH_ITEMS = TagRegistry.item(new Identifier("mirrorstones","earth_items"));
@@ -56,11 +56,12 @@ public class Mirrorstones implements ModInitializer {
 				.step(GenerationStep.Feature.SURFACE_STRUCTURES)
 				.defaultConfig(32, 8, 12345)
 				.adjustsSurface()
+				.superflatFeature(MY_CONFIGURED)
 				.register();
 
 		RegistryKey<ConfiguredStructureFeature<?, ?>> myConfigured = RegistryKey.of(Registry.CONFIGURED_STRUCTURE_FEATURE_KEY,
 				new Identifier("mirrorstones", "mirrorstone"));
-		BuiltinRegistries.add(BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE, myConfigured.getValue(), MY_CONFIGURED);
+		Registry.register(BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE, myConfigured.getValue(), MY_CONFIGURED);
 		BiomeModifications.addStructure(BiomeSelectors.all(), myConfigured);
 	}
 
